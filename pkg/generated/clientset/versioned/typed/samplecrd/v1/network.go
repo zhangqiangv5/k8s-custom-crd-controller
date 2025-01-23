@@ -39,6 +39,8 @@ type NetworksGetter interface {
 type NetworkInterface interface {
 	Create(ctx context.Context, network *samplecrdv1.Network, opts metav1.CreateOptions) (*samplecrdv1.Network, error)
 	Update(ctx context.Context, network *samplecrdv1.Network, opts metav1.UpdateOptions) (*samplecrdv1.Network, error)
+	// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
+	UpdateStatus(ctx context.Context, network *samplecrdv1.Network, opts metav1.UpdateOptions) (*samplecrdv1.Network, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*samplecrdv1.Network, error)
