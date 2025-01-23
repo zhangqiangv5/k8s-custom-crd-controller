@@ -3,5 +3,5 @@ kind: Network
 metadata:
   name: example-network
 spec:
-  cidr: "192.168.0.0/16"
-  gateway: "192.168.0.1"
+  cidr: "192.16.0.0/16"
+  gateway: "192.16.0.1"
