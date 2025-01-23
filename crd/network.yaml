@@ -18,6 +18,10 @@ spec:
             spec:
               type: object
               properties:
+                cidr:
+                  type: string
+                gateway:
+                  type: string
                 deploymentName:
                   type: string
                 replicas:
