@@ -138,6 +138,7 @@ func (c *Controller) processNextWorkItem(ctx context.Context) bool {
 
 	utilruntime.HandleErrorWithContext(ctx, err, "Error syncing; requeuing for later retry", "objectReference", objRef)
 	c.workqueue.AddRateLimited(objRef)
+	return true
 }
 
 func (c *Controller) syncHandler(ctx context.Context, objectRef cache.ObjectName) error {
@@ -232,7 +233,8 @@ func newDeployment(network *samplecrdv1.Network) *appsv1.Deployment {
 }
 
 func (c *Controller) runWorker(ctx context.Context) {
-
+	for c.processNextWorkItem(ctx) {
+	}
 }
 
 func (c *Controller) handleObject(obj interface{}) {
